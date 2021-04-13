@@ -3,3 +3,13 @@
 ################################################################################
 
 /OriginFinancial.CodingChallenge.AppService/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.AppService/obj
+/OriginFinancial.CodingChallenge.Data/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Data/obj
+/OriginFinancial.CodingChallenge.Domain/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Domain/obj
+/OriginFinancial.CodingChallenge.Infra.CrossCutting/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Infra.CrossCutting/obj
+/OriginFinancial.CodingChallenge.Service/.vs/OriginFinancial.CodingChallenge.Service/v16
+/OriginFinancial.CodingChallenge.Service/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Service/obj

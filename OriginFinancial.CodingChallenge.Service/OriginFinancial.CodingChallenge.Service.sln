@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Service", "OriginFinancial.CodingChallenge.Service.csproj", "{8C334378-7C04-4716-93C9-4B665C8DD30D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Service", "1 - Service", "{26C80AE7-3238-4841-B24F-8DA280A033BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - AppService", "2 - AppService", "{C5E5C007-E54E-4BC9-A33B-27466D38A5B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{EF996275-7C67-4EF1-A9BB-1C9523E1676E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{815681A0-A9DF-44CF-B2EE-CC71D9A65FB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{1F9CA38D-A7B0-4C5A-8E32-2D95C616382C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{609AA2E2-06D0-46EB-9099-03EA9BCC2540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.AppService", "..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj", "{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Domain", "..\OriginFinancial.CodingChallenge.Domain\OriginFinancial.CodingChallenge.Domain.csproj", "{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Infra.Data", "..\OriginFinancial.CodingChallenge.Data\OriginFinancial.CodingChallenge.Infra.Data.csproj", "{BC8AD251-2713-44A8-9072-94F034B48EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Infra.IoC", "..\OriginFinancial.CodingChallenge.Infra.CrossCutting\OriginFinancial.CodingChallenge.Infra.IoC.csproj", "{2143CEEC-2623-4C05-AB12-01EED967A112}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C334378-7C04-4716-93C9-4B665C8DD30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C334378-7C04-4716-93C9-4B665C8DD30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C334378-7C04-4716-93C9-4B665C8DD30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C334378-7C04-4716-93C9-4B665C8DD30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC8AD251-2713-44A8-9072-94F034B48EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC8AD251-2713-44A8-9072-94F034B48EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC8AD251-2713-44A8-9072-94F034B48EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC8AD251-2713-44A8-9072-94F034B48EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2143CEEC-2623-4C05-AB12-01EED967A112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2143CEEC-2623-4C05-AB12-01EED967A112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2143CEEC-2623-4C05-AB12-01EED967A112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2143CEEC-2623-4C05-AB12-01EED967A112}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C334378-7C04-4716-93C9-4B665C8DD30D} = {26C80AE7-3238-4841-B24F-8DA280A033BC}
+		{1F9CA38D-A7B0-4C5A-8E32-2D95C616382C} = {815681A0-A9DF-44CF-B2EE-CC71D9A65FB5}
+		{609AA2E2-06D0-46EB-9099-03EA9BCC2540} = {815681A0-A9DF-44CF-B2EE-CC71D9A65FB5}
+		{97E15652-B8A7-41A9-8C23-2CA1D8BC354A} = {C5E5C007-E54E-4BC9-A33B-27466D38A5B6}
+		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8} = {EF996275-7C67-4EF1-A9BB-1C9523E1676E}
+		{BC8AD251-2713-44A8-9072-94F034B48EF3} = {1F9CA38D-A7B0-4C5A-8E32-2D95C616382C}
+		{2143CEEC-2623-4C05-AB12-01EED967A112} = {609AA2E2-06D0-46EB-9099-03EA9BCC2540}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80F9E3F8-AD5A-4466-9BA8-109E69B84BEA}
+	EndGlobalSection
+EndGlobal
