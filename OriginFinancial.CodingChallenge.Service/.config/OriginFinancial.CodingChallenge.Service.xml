@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OriginFinancial.CodingChallenge.Service</name>
+    </assembly>
+    <members>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
+            <summary>
+            The Startup configurations and services registration for host lifetime and applications'
+            running environment.
+            </summary>
+            <param name="hostEnvironment">Web host environment interface.</param>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">Service collection injected interface.</param>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">Interface that allows a configuration of the application's request pipeline.</param>
+            <param name="env">Web host environment.</param>
+        </member>
+        <member name="T:OriginFinancial.CodingChallenge.Service.Utils.Common.CommonBaseController">
+            <summary>
+            "Override of the Controller Base for customized functions.
+            </summary>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Common.CommonBaseController.SetTrace(System.Exception)">
+            <summary>
+            The method that sets a trace for an Exception.
+            </summary>
+            <param name="exception">The exception for the trace to be set by.</param>
+            <returns>An <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse"/> for the Exception's trace.</returns>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.#ctor(System.Int32,System.String,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            The error response constructor.
+            </summary>
+            <param name="code">The HTTP's return code.</param>
+            <param name="errorMessage">The possible error messages.</param>
+            <param name="className">The possible class where the error took place.</param>
+            <param name="methodName">The possible method in which the error took place.</param>
+            <param name="line">The possible line at which the error took place.</param>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.Code">
+            <summary>
+            The HTTP's method return code.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.Date">
+            <summary>
+            The date for the error's occurring.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.Errors">
+            <summary>
+            The possible errors' fields.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.ErrorFields.ErrorMessage">
+            <summary>
+            The error message from the exception or business rule.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.ErrorFields.ClassName">
+            <summary>
+            The error's class of origin.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.ErrorFields.MethodName">
+            <summary>
+            The method where the error took place.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse.ErrorFields.Line">
+            <summary>
+            The line of code where the error took place.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse.Code">
+            <summary>
+            The HTTP's return code.
+            </summary>
+        </member>
+        <member name="P:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse.SuccessMessage">
+            <summary>
+            The success message string.
+            </summary>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse.#ctor(System.Int32,System.String)">
+            <summary>
+            The success response's constructor.
+            </summary>
+            <param name="code">The HTTP's return code.</param>
+            <param name="successMessage">The success message string.</param>
+        </member>
+        <member name="T:OriginFinancial.CodingChallenge.Service.Utils.Extensions.DependencyInjectionExtension">
+            <summary>
+            Extension class for calling the dependency injection methods out of the IoC layer.
+            </summary>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Extensions.DependencyInjectionExtension.AddDIConfigurations(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            The static method that calls for the configurations of the dependency injections.
+            </summary>
+            <param name="services">Interface for specifying contracts for multiple layers of services;</param>
+            <param name="configuration">Interface for the configuration builder contract specification.</param>
+        </member>
+    </members>
+</doc>
