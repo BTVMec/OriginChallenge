@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using OriginFinancial.CodingChallenge.Service.Utils.Extensions;
+using OriginFinancial.CodingChallenge.Service.Utils.Middleware;
 using System.Globalization;
 
 namespace OriginFinancial.CodingChallenge.Service
@@ -81,6 +82,9 @@ namespace OriginFinancial.CodingChallenge.Service
             {
                 app.UseExceptionHandler("/error");
             }
+
+            //Checking/running the available migrations.
+            app.MigrateContexts();
 
             //Setting the usage of static files.
             app.UseStaticFiles();
