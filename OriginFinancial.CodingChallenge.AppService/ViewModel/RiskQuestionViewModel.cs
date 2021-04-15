@@ -12,7 +12,7 @@ namespace OriginFinancial.CodingChallenge.AppService.ViewModel
         public string Question { get; set; }
 
         [Display(Name = "Answer")]
-        public int Answer { get; set; }
+        public bool Answer { get; set; }
 
         [JsonIgnore]
         public int StatusID { get; set; }

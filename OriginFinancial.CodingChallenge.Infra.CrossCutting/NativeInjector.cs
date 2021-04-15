@@ -4,11 +4,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OriginFinancial.CodingChallenge.AppService.AppService;
 using OriginFinancial.CodingChallenge.AppService.Interface;
+using OriginFinancial.CodingChallenge.Domain.Entity;
 using OriginFinancial.CodingChallenge.Domain.Interface.Context;
+using OriginFinancial.CodingChallenge.Domain.Interface.Repository;
 using OriginFinancial.CodingChallenge.Domain.Interface.Service;
 using OriginFinancial.CodingChallenge.Domain.Service;
 using OriginFinancial.CodingChallenge.Infra.Data.Context;
+using OriginFinancial.CodingChallenge.Infra.Data.Repository;
 using System;
+using System.Linq;
 
 namespace OriginFinancial.CodingChallenge.Infra.IoC
 {
@@ -51,13 +55,16 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
             //Registering the appService layer.
             services.AddScoped<IContractAppService, ContractAppService>();
             services.AddScoped<ICustomerAppService, CustomerAppService>();
+            services.AddScoped<IDomainAppService, DomainAppService>();
             services.AddScoped<IRiskQuestionAppService, RiskQuestionAppService>();
 
             //Registering the domain layer.
             services.AddScoped<IContractService, ContractService>();
+            services.AddScoped<IRiskQuestionService, RiskQuestionService>();
 
             //Registering the infra, and the data layer.
             services.AddScoped<IMainDatabaseContext, MainDatabaseContext>();
+            services.AddScoped<IRiskQuestionRepository, RiskQuestionRepository>();
         }
 
         /// <summary>
@@ -77,6 +84,40 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        /// <summary>
+        /// The method for inserting inital data into the database.
+        /// </summary>
+        /// <param name="builder">Interface that allows a configuration of the application's request pipeline.</param>
+        public static void SeedDatabase(IApplicationBuilder builder)
+        {
+            try
+            {
+                //Creating the scope for service factory.
+                using (var scope = builder.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+                {
+                    //Creating the scope for context service.
+                    using (var context = scope.ServiceProvider.GetRequiredService<MainDatabaseContext>())
+                    {
+                        //Ensuring that the database is created before seeding it.
+                        context.Database.EnsureCreated();
+
+                        //Risk questions.
+                        if (context.RiskQuestion.Count().Equals(0))
+                        {
+                            context.RiskQuestion.Add(new RiskQuestion { Question = "First question", StatusID = 1, Created = DateTime.Now });
+                            context.RiskQuestion.Add(new RiskQuestion { Question = "Second question", StatusID = 1, Created = DateTime.Now });
+                            context.RiskQuestion.Add(new RiskQuestion { Question = "Third question", StatusID = 1, Created = DateTime.Now });
+                            context.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
     }

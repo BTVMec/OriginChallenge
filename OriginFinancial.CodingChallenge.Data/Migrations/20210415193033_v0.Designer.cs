@@ -9,7 +9,7 @@ using OriginFinancial.CodingChallenge.Infra.Data.Context;
 namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20210415004943_v0")]
+    [Migration("20210415193033_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,9 +57,6 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("date");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
@@ -104,29 +101,29 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("ContractID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
                     b.Property<Guid>("CustomerID")
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("InsuranceContractID")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("RiskQuestionAnswer")
-                        .HasColumnType("int");
+                    b.Property<ulong>("RiskQuestionAnswer")
+                        .HasColumnType("bit");
 
                     b.Property<int>("RiskQuestionID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("ContractID");
 
-                    b.HasIndex("InsuranceContractID");
+                    b.HasIndex("CustomerID");
 
                     b.HasIndex("RiskQuestionID");
 
@@ -158,15 +155,15 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 
             modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.CustomerRiskQuestion", b =>
                 {
-                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
+                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.Contract", "Contract")
+                        .WithMany("CustomerRiskQuestions")
+                        .HasForeignKey("ContractID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.Contract", "InsuranceContract")
-                        .WithMany("CustomerRiskQuestions")
-                        .HasForeignKey("InsuranceContractID")
+                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

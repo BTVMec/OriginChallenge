@@ -14,7 +14,7 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         public string Question { get; set; }
 
         [NotMapped]
-        public int Answer { get; set; }
+        public bool Answer { get; set; }
 
         [Column(TypeName = "int")]
         public int StatusID { get; set; }

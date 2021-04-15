@@ -1,4 +1,5 @@
-﻿using OriginFinancial.CodingChallenge.Domain.Entity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using OriginFinancial.CodingChallenge.Domain.Entity;
 using OriginFinancial.CodingChallenge.Domain.Interface.Service;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,13 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
 {
     public class ContractService : IContractService
     {
+        private readonly IRiskQuestionService _riskQuestionService;
+
+        public ContractService(IServiceProvider services)
+        {
+            _riskQuestionService = services.GetRequiredService<IRiskQuestionService>();
+        }
+
         /// <summary>
         /// The asynchronous method for registering a new customer's contract.
         /// </summary>
@@ -24,6 +32,12 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
             for (int i = 1; i <= riskQuestions.Count(); i++)
                 riskQuestions[i].ID = i;
 
+            //Checking the received risk questions' answers - retrieving the registered active questions for comparison.
+            List<RiskQuestion> riskQuestionsDB = _riskQuestionService.List(1);
+
+            if (riskQuestions.Select(x => x.ID).OrderBy(x => x).ToList() != riskQuestionsDB.Select(x => x.ID).OrderBy(x => x).ToList())
+                throw new Exception("The submitted answers do not correspond to the active questions registered in database.");
+
             //Creating the list of customer-risk questions object.
             List<CustomerRiskQuestion> customerRiskQuestions = riskQuestions.Select(x => new CustomerRiskQuestion
             {
@@ -33,7 +47,9 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                 RiskQuestion = x,
                 Contract = contract,
                 Created = DateTime.Now
-            }).ToList();
+            }).OrderBy(x => x.ID).ToList();
+
+            return null;
         }
     }
 }

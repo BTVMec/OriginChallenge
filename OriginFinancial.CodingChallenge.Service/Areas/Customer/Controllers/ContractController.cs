@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    [Route("[area]/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ContractController : CommonBaseController
     {

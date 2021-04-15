@@ -10,8 +10,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [Column(TypeName = "int")]
         public int ID { get; set; }
 
-        [Column(TypeName = "int")]
-        public int RiskQuestionAnswer { get; set; }
+        [Column(TypeName = "bit")]
+        public bool RiskQuestionAnswer { get; set; }
 
         #region Tracking.
         [Column(TypeName = "datetime")]

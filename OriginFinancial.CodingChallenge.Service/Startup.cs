@@ -83,8 +83,14 @@ namespace OriginFinancial.CodingChallenge.Service
                 app.UseExceptionHandler("/error");
             }
 
+            //Setting the usage of authorization.
+            app.UseAuthentication();
+
             //Checking/running the available migrations.
             app.MigrateContexts();
+
+            //Checking/running the initial database's seed.
+            app.SeedDatabase();
 
             //Setting the usage of static files.
             app.UseStaticFiles();

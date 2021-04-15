@@ -1,5 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OriginFinancial.CodingChallenge.Domain.Interface.Context;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace OriginFinancial.CodingChallenge.Infra.Data.Context
 {
@@ -9,7 +13,7 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Context
     /// <typeparam name="TEntity">The generic type for the entity that is been used during the scoped action.</typeparam>
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        private readonly MainDatabaseContext _dbContext;
+        protected MainDatabaseContext _dbContext;
         protected DbSet<TEntity> DbSet;
 
         /// <summary>
@@ -20,6 +24,25 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Context
         {
             _dbContext = (MainDatabaseContext)dbContext;
             DbSet = _dbContext.Set<TEntity>();
+        }
+
+        /// <summary>
+        /// The generic method for listing filtered items from the database.
+        /// </summary>
+        /// <param name="predicate">The filtering expression for listing the entries from database.</param>
+        /// <returns>A<see cref="IEnumerable{T}"/> of the <see cref="TEntity"/> type of objects.</returns>
+        public IEnumerable<TEntity>List(Expression<Func<TEntity, bool>> predicate)
+        {
+            try
+            {
+                return DbSet.Where(predicate);
+            }
+            catch (Exception ex)
+            {
+                string trace = !string.IsNullOrEmpty(ex.StackTrace) ? ex.StackTrace.Split("at").LastOrDefault().Split("\\").LastOrDefault() : "";
+                ex.HelpLink += $"DATABASE ERROR - {ex?.InnerException?.Message}|{trace}";
+                throw;
+            }
         }
 
         /// <summary>

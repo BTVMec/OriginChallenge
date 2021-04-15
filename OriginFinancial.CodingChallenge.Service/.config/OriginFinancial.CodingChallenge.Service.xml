@@ -20,6 +20,24 @@
             </list>
             </returns>
         </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers.DomainController.List">
+            <summary>
+            The method for listing the domain values considered for the system's properties.
+            </summary>
+            <returns>
+            <list type="bullet">
+            <item>
+            <description>A <see cref="T:Microsoft.AspNetCore.Mvc.OkResult"/> with the list of values, if the process is successful;</description>
+            </item>
+            <item>
+            <description>A <see cref="T:Microsoft.AspNetCore.Mvc.NotFoundResult"/> if the data is not found;</description>
+            </item>
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse"/> is the process fails.</description>
+            </item>
+            </list>
+            </returns>
+        </member>
         <member name="M:OriginFinancial.CodingChallenge.Service.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
             The Startup configurations and services registration for host lifetime and applications'
@@ -134,6 +152,13 @@
         <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Middleware.MigrationConfigurations.MigrateContexts(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             The method for running contexts' migrations.
+            </summary>
+            <param name="builder">Interface that allows a configuration of the application's request pipeline.</param>
+            <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> after configuring migrations.</returns>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Utils.Middleware.MigrationConfigurations.SeedDatabase(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            The method for running the database's initial data seed.
             </summary>
             <param name="builder">Interface that allows a configuration of the application's request pipeline.</param>
             <returns>The <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> after configuring migrations.</returns>

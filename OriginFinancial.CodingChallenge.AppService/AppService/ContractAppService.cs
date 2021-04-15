@@ -41,6 +41,8 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
 
                 //Registering the new contract.
                 Contract contract = await _contractService.CreateAsync(customer, riskQuestions);
+
+                return null;
             }
             catch
             {
