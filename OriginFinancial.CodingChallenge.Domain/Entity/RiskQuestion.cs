@@ -10,13 +10,16 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [Column(TypeName = "int")]
         public int ID { get; set; }
 
-        [Column(TypeName="nvarchar(250)")]
+        [Column(TypeName = "nvarchar(250)")]
         public string Question { get; set; }
 
-        [Column(TypeName ="int")]
-        public int TypeID { get; set; }
+        [NotMapped]
+        public int Answer { get; set; }
 
-        [Column(TypeName ="datetime")]
+        [Column(TypeName = "int")]
+        public int StatusID { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime Created { get; set; }
 
         [Column(TypeName = "datetime")]

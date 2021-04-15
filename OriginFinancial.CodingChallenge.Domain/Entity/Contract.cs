@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OriginFinancial.CodingChallenge.Domain.Entity
 {
-    public class InsuranceContract
+    public class Contract
     {
         [Key]
         [Column(TypeName = "int")]

@@ -63,7 +63,7 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Context
         //Setting the database's context entities.
         public DbSet<Customer> Customer { get; set; }
         public DbSet<CustomerRiskQuestion> CustomerRiskQuestion { get; set; }
-        public DbSet<InsuranceContract> InsuranceContract { get; set; }
+        public DbSet<Contract> Contract { get; set; }
         public DbSet<RiskQuestion> RiskQuestion { get; set; }
     }
 }

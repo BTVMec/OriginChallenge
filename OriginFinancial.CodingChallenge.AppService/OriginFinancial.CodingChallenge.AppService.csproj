@@ -5,13 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AppService\" />
-    <Folder Include="Interface\" />
-    <Folder Include="ViewModel\" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.Domain\OriginFinancial.CodingChallenge.Domain.csproj" />
   </ItemGroup>
 
 </Project>

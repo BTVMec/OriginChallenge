@@ -22,10 +22,10 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Customer\Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj" />
     <ProjectReference Include="..\OriginFinancial.CodingChallenge.Infra.CrossCutting\OriginFinancial.CodingChallenge.Infra.IoC.csproj" />
   </ItemGroup>
 

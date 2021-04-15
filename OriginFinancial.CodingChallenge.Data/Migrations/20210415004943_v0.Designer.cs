@@ -9,7 +9,7 @@ using OriginFinancial.CodingChallenge.Infra.Data.Context;
 namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20210414024855_v0")]
+    [Migration("20210415004943_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,6 +18,35 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.14")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.Contract", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AutoInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("DisabilityInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HomeInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LifeInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Modified")
+                        .HasColumnType("datetime");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Contract");
+                });
 
             modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.Customer", b =>
                 {
@@ -104,35 +133,6 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                     b.ToTable("CustomerRiskQuestion");
                 });
 
-            modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.InsuranceContract", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("AutoInsuranceID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("DisabilityInsuranceID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HomeInsuranceID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LifeInsuranceID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Modified")
-                        .HasColumnType("datetime");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("InsuranceContract");
-                });
-
             modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.RiskQuestion", b =>
                 {
                     b.Property<int>("ID")
@@ -148,7 +148,7 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                     b.Property<string>("Question")
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("TypeID")
+                    b.Property<int>("StatusID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -164,7 +164,7 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.InsuranceContract", "InsuranceContract")
+                    b.HasOne("OriginFinancial.CodingChallenge.Domain.Entity.Contract", "InsuranceContract")
                         .WithMany("CustomerRiskQuestions")
                         .HasForeignKey("InsuranceContractID")
                         .OnDelete(DeleteBehavior.Cascade)

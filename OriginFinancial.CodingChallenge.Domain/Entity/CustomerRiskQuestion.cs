@@ -29,7 +29,7 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         public int RiskQuestionID { get; set; }
 
         [Column(TypeName = "int")]
-        public int InsuranceContractID { get; set; }
+        public int ContractID { get; set; }
         #endregion
 
         #region Foreign objects.
@@ -39,8 +39,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [ForeignKey("RiskQuestionID")]
         public virtual RiskQuestion RiskQuestion { get; set; }
 
-        [ForeignKey("InsuranceContractID")]
-        public virtual InsuranceContract InsuranceContract { get; set; }
+        [ForeignKey("ContractID")]
+        public virtual Contract Contract { get; set; }
         #endregion
     }
 }

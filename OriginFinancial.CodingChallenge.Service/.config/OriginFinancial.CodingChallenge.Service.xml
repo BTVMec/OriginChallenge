@@ -4,6 +4,22 @@
         <name>OriginFinancial.CodingChallenge.Service</name>
     </assembly>
     <members>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers.ContractController.CreateAsync(OriginFinancial.CodingChallenge.Service.Areas.Customer.Models.ContractDataRequest)">
+            <summary>
+            The asynchronous method for users/customers to create a insurance contract by giving their personal informations.
+            </summary>
+            <param name="contractDataRequest">The object for the contract request information.</param>
+            <returns>
+            <list type="bullet">
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse"/> if the process is successful;</description>
+            </item>
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse"/> if the process fails.</description>
+            </item>
+            </list>
+            </returns>
+        </member>
         <member name="M:OriginFinancial.CodingChallenge.Service.Startup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment)">
             <summary>
             The Startup configurations and services registration for host lifetime and applications'

@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
 {
-    public class CustomerDataRequest
+    public class ContractDataRequest
     {
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "The {0} field is required.")]
@@ -43,6 +44,9 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
 
         [Display(Name = "Vehicle")]
         public Vehicle Vehicle { get; set; }
+
+        [Display(Name = "RiskQuestions")]
+        public List<RiskQuestion> RiskQuestions { get; set; }
     }
 
     public class House
@@ -59,5 +63,13 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
         [Display(Name = "Year")]
         [Range(1900, int.MaxValue, ErrorMessage = "The field {0} value's must be equal or greater than to {1}.")]
         public int? VehicleYear { get; set; }
+    }
+
+    public class RiskQuestion
+    {
+        [Display(Name = "Answer")]
+        [Required(ErrorMessage = "The {0} field is required.")]
+        [Range(0, 1, ErrorMessage = "The field {0} value's must be equal to {1} or {2}.")]
+        public int Answer { get; set; }
     }
 }

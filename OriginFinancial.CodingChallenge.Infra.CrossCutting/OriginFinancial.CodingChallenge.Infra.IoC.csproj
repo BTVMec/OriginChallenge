@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj" />
     <ProjectReference Include="..\OriginFinancial.CodingChallenge.Data\OriginFinancial.CodingChallenge.Infra.Data.csproj" />
   </ItemGroup>
 

@@ -9,6 +9,24 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Contract",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AutoInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    DisabilityInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    HomeInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    LifeInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Modified = table.Column<DateTime>(type: "datetime", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contract", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
@@ -33,31 +51,13 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InsuranceContract",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    AutoInsuranceID = table.Column<int>(type: "int", nullable: false),
-                    DisabilityInsuranceID = table.Column<int>(type: "int", nullable: false),
-                    HomeInsuranceID = table.Column<int>(type: "int", nullable: false),
-                    LifeInsuranceID = table.Column<int>(type: "int", nullable: false),
-                    Created = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Modified = table.Column<DateTime>(type: "datetime", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InsuranceContract", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "RiskQuestion",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Question = table.Column<string>(type: "nvarchar(250)", nullable: true),
-                    TypeID = table.Column<int>(type: "int", nullable: false),
+                    StatusID = table.Column<int>(type: "int", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true)
                 },
@@ -89,9 +89,9 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerRiskQuestion_InsuranceContract_InsuranceContractID",
+                        name: "FK_CustomerRiskQuestion_Contract_InsuranceContractID",
                         column: x => x.InsuranceContractID,
-                        principalTable: "InsuranceContract",
+                        principalTable: "Contract",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -127,7 +127,7 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                 name: "Customer");
 
             migrationBuilder.DropTable(
-                name: "InsuranceContract");
+                name: "Contract");
 
             migrationBuilder.DropTable(
                 name: "RiskQuestion");

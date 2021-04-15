@@ -19,9 +19,6 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [Column(TypeName = "int")]
         public int Age { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime BirthDate { get; set; }
-
         [Column(TypeName = "int")]
         public int Dependents { get; set; }
 
