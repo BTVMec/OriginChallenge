@@ -37,7 +37,7 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
         /// <returns>A <see cref="List{T}"/> of <see cref="RiskQuestion"/> objects for the registered questions.</returns>
         public List<RiskQuestion> List(int status)
         {
-            return _riskQuestionRepository.List(x => x.StatusID == status)?.ToList();
+            return _riskQuestionRepository.List(x => x.StatusID == status)?.OrderBy(x => x.ID).ToList();
         }
     }
 }
