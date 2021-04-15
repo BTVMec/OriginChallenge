@@ -7,8 +7,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
     public class Customer
     {
         [Key]
-        [Column(TypeName = "char(36)")]
-        public Guid ID { get; set; }
+        [Column(TypeName = "int")]
+        public int ID { get; set; }
 
         [Column(TypeName = "varchar(100)")]
         public string FullName { get; set; }

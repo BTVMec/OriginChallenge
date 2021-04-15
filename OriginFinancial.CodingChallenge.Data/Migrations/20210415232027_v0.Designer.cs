@@ -9,7 +9,7 @@ using OriginFinancial.CodingChallenge.Infra.Data.Context;
 namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20210415193033_v0")]
+    [Migration("20210415232027_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,11 +21,14 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 
             modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.Contract", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("AutoInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AutoInsurancePoints")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
@@ -34,10 +37,22 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                     b.Property<int>("DisabilityInsuranceID")
                         .HasColumnType("int");
 
+                    b.Property<int>("DisabilityInsurancePoints")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GlobalRiskPoints")
+                        .HasColumnType("int");
+
                     b.Property<int>("HomeInsuranceID")
                         .HasColumnType("int");
 
+                    b.Property<int>("HomeInsurancePoints")
+                        .HasColumnType("int");
+
                     b.Property<int>("LifeInsuranceID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LifeInsurancePoints")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("Modified")
@@ -50,9 +65,9 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 
             modelBuilder.Entity("OriginFinancial.CodingChallenge.Domain.Entity.Customer", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -101,14 +116,14 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ContractID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ContractID")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<Guid>("CustomerID")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("CustomerID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");

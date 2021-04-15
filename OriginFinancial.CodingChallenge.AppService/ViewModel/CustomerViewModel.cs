@@ -6,7 +6,7 @@ namespace OriginFinancial.CodingChallenge.AppService.ViewModel
 {
     public class CustomerViewModel
     {
-        public Guid ID { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Full name")]
         public string FullName { get; set; }
@@ -21,7 +21,7 @@ namespace OriginFinancial.CodingChallenge.AppService.ViewModel
         public int Dependents { get; set; }
 
         [JsonIgnore]
-        public int? House { get; set; }
+        public int House { get; set; }
 
         [JsonIgnore]
         public int? HouseOwnershipStatusID { get; set; }
@@ -41,12 +41,22 @@ namespace OriginFinancial.CodingChallenge.AppService.ViewModel
                 if (HouseOwnershipStatusID.HasValue)
                     return Enum.GetName(typeof(HouseOwnershipStatus), HouseOwnershipStatusID);
                 else
-                    return "";
+                    return "Customer doesn't own a house.";
             }
         }
 
-        [Display(Name = "Income")]
+        [JsonIgnore]
         public int Income { get; set; }
+
+        [JsonProperty("Income")]
+        [Display(Name = "Income")]
+        public string strIncome
+        {
+            get
+            {
+                return Income.ToString("C2");
+            }
+        }
 
         [JsonIgnore]
         public int MaritalStatusID { get; set; }
@@ -68,16 +78,20 @@ namespace OriginFinancial.CodingChallenge.AppService.ViewModel
         }
 
         [JsonIgnore]
-        public int? Vehicle { get; set; }
+        public int Vehicle { get; set; }
 
         [JsonProperty("Vehicle")]
         [Display(Name = "Vehicle")]
         public int? VehicleYear { get; set; }
 
         [Display(Name = "Created")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss}")]
         public DateTime Created { get; set; }
 
         [Display(Name = "Modified")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss}")]
         public DateTime? Modified { get; set; }
     }
 }

@@ -36,7 +36,10 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
             {
                 //Setting the ID of the questions.
                 for (int i = 0; i < riskQuestionsDB.Count(); i++)
+                {
                     riskQuestions[i].ID = riskQuestionsDB[i].ID;
+                    riskQuestions[i].Question = riskQuestionsDB[i].Question; 
+                }
 
                 //Creating the list of customer-risk questions object.
                 List<CustomerRiskQuestion> customerRiskQuestions = riskQuestions.Select(x => new CustomerRiskQuestion
@@ -44,6 +47,7 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                     ID = x.ID,
                     RiskQuestionAnswer = x.Answer,
                     RiskQuestionID = x.ID,
+                    RiskQuestion = x,
                     Customer = customer,
                     Contract = contract,
                     Created = DateTime.Now
@@ -63,11 +67,15 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
 
                 //Setting the life insurance.
                 SetLifeInsurance(customer, ref contract);
+
+                //Setting the contract's and the customer's remaining information.
+                contract.CustomerRiskQuestions = customerRiskQuestions;
+                contract.Created = customer.Created = DateTime.Now;
             }
             else
                 throw new Exception("The submitted answers do not correspond to the active questions registered in database.");
 
-            return null;
+            return Task.FromResult(contract);
         }
 
         /// <summary>

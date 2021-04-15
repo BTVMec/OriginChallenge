@@ -29,8 +29,10 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
             {
                 return riskQuestions.Select(x => new RiskQuestion
                 {
+                    ID = x.ID,
                     Question = x.Question,
-                    Answer = x.Answer
+                    Answer = x.Answer,
+                    StatusID = x.StatusID
                 }).ToList();
             }
             catch

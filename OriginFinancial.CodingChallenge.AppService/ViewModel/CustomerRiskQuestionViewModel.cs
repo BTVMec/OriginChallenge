@@ -1,37 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace OriginFinancial.CodingChallenge.AppService.ViewModel
 {
-    public class RiskQuestionViewModel
+    public class CustomerRiskQuestionViewModel
     {
         public int ID { get; set; }
 
         [Display(Name = "Question")]
         public string Question { get; set; }
 
-        [JsonIgnore]
         [Display(Name = "Answer")]
         public bool Answer { get; set; }
-
-        [JsonIgnore]
-        public int StatusID { get; set; }
-
-        public enum Status
-        {
-            Active = 1,
-            Inactive = 2,
-        }
-
-        [Display(Name = "Status")]
-        public string strStatus
-        {
-            get
-            {
-                return Enum.GetName(typeof(Status), StatusID);
-            }
-        }
 
         [Display(Name = "Created")]
         [DataType(DataType.DateTime)]

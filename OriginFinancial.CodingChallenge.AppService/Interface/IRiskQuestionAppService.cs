@@ -13,6 +13,12 @@ namespace OriginFinancial.CodingChallenge.AppService.Interface
         /// <returns>A <see cref="List{T}"/> of <see cref="RiskQuestion"/> objects created from the view model.</returns>
         List<RiskQuestion> ListViewToListData(List<RiskQuestionViewModel> riskQuestions);
         /// <summary>
+        /// The method that converts the properties values from the data model list to the the model list.
+        /// </summary>
+        /// <param name="riskQuestions">The object as data model list.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="RiskQuestionViewModel"/> objects created from the data model.</returns>
+        List<RiskQuestionViewModel> ListDataToListView(List<RiskQuestion> riskQuestions);
+        /// <summary>
         /// The method that lists questions that are registered in the database.
         /// </summary>
         /// <param name="status">The parameter for filtering the questions to be listed:

@@ -8,8 +8,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
     public class Contract
     {
         [Key]
-        [Column(TypeName = "int")]
-        public int ID { get; set; }
+        [Column(TypeName = "char(36)")]
+        public Guid ID { get; set; }
 
         [Column(TypeName = "int")]
         public int GlobalRiskPoints { get; set; }

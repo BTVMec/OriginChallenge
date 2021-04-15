@@ -50,7 +50,7 @@ namespace OriginFinancial.CodingChallenge.Service
                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                 options.SerializerSettings.Culture = new CultureInfo("en-US");
                 options.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
-                options.SerializerSettings.DateFormatString = "yyyy-MM-ddTHH:mm:ss";
+                options.SerializerSettings.DateFormatString = "yyyy/MM/dd HH:mm:ss";
             });
 
             //Adding the custom DI services.

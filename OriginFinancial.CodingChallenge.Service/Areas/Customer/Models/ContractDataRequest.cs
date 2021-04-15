@@ -25,12 +25,12 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
 
         [Display(Name = "Age")]
         [Required(ErrorMessage = "The {0} field is required.")]
-        [Range(18, 100, ErrorMessage = "The field {0} value's must be from {1} and {2}.")]
-        public int Age { get; set; } = 18;
+        [Range(18, 100, ErrorMessage = "The field {0} value's must be from {1} to {2}.")]
+        public int Age { get; set; } 
 
         [Display(Name = "Dependents")]
         [Required(ErrorMessage = "The {0} field is required.")]
-        [Range(0, 10, ErrorMessage = "The field {0} value's must be from {1} and {2}.")]
+        [Range(0, 10, ErrorMessage = "The field {0} value's must be from {1} to {2}.")]
         public int Dependents { get; set; }
 
         [Display(Name = "House")]
@@ -38,14 +38,14 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
 
         [Display(Name = "Income")]
         [Required(ErrorMessage = "The {0} field is required.")]
-        [Range(0, int.MaxValue, ErrorMessage = "The field {0} value's must be equal or greater than to {1}.")]
+        [Range(0, int.MaxValue, ErrorMessage = "The field {0} value's must be equal or greater than {1}.")]
         public int Income { get; set; }
 
         [JsonProperty("MaritalStatus")]
         [Display(Name = "MaritalStatus")]
         [Required(ErrorMessage = "The {0} field is required.")]
         [Range(1, 2, ErrorMessage = "The field {0} value's must be equal to {1} or {2}.")]
-        public int MaritalStatusID { get; set; } = 1;
+        public int MaritalStatusID { get; set; }
 
         [Display(Name = "Vehicle")]
         public Vehicle Vehicle { get; set; }
@@ -59,15 +59,15 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
         [JsonProperty("OwnershipStatus")]
         [Display(Name = "OwnershipStatus")]
         [Range(1, 2, ErrorMessage = "The field {0} value's must be equal to {1} or {2}.")]
-        public int? HouseOwnershipStatusID { get; set; } = 1;
+        public int? HouseOwnershipStatusID { get; set; }
     }
 
     public class Vehicle
     {
         [JsonProperty("Year")]
         [Display(Name = "Year")]
-        [Range(1900, int.MaxValue, ErrorMessage = "The field {0} value's must be equal or greater than to {1}.")]
-        public int? VehicleYear { get; set; } = 1900;
+        [Range(1900, 2021, ErrorMessage = "The field {0}'s value must be from {1} to {2}.")]
+        public int? VehicleYear { get; set; }
     }
 
     public class RiskQuestion

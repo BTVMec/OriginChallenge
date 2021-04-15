@@ -22,14 +22,14 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         #endregion
 
         #region Foreign keys.
-        [Column(TypeName = "char(36)")]
-        public Guid CustomerID { get; set; }
+        [Column(TypeName = "int")]
+        public int CustomerID { get; set; }
 
         [Column(TypeName = "int")]
         public int RiskQuestionID { get; set; }
 
-        [Column(TypeName = "int")]
-        public int ContractID { get; set; }
+        [Column(TypeName = "char(36)")]
+        public Guid ContractID { get; set; }
         #endregion
 
         #region Foreign objects.

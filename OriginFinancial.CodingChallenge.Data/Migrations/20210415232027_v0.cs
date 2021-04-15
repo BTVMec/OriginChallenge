@@ -12,11 +12,15 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                 name: "Contract",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ID = table.Column<Guid>(type: "char(36)", nullable: false),
+                    GlobalRiskPoints = table.Column<int>(type: "int", nullable: false),
+                    AutoInsurancePoints = table.Column<int>(type: "int", nullable: false),
                     AutoInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    DisabilityInsurancePoints = table.Column<int>(type: "int", nullable: false),
                     DisabilityInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    HomeInsurancePoints = table.Column<int>(type: "int", nullable: false),
                     HomeInsuranceID = table.Column<int>(type: "int", nullable: false),
+                    LifeInsurancePoints = table.Column<int>(type: "int", nullable: false),
                     LifeInsuranceID = table.Column<int>(type: "int", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true)
@@ -30,7 +34,8 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "char(36)", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FullName = table.Column<string>(type: "varchar(100)", nullable: true),
                     Email = table.Column<string>(type: "varchar(60)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
@@ -74,9 +79,9 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
                     RiskQuestionAnswer = table.Column<ulong>(type: "bit", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime", nullable: true),
-                    CustomerID = table.Column<Guid>(type: "char(36)", nullable: false),
+                    CustomerID = table.Column<int>(type: "int", nullable: false),
                     RiskQuestionID = table.Column<int>(type: "int", nullable: false),
-                    ContractID = table.Column<int>(type: "int", nullable: false)
+                    ContractID = table.Column<Guid>(type: "char(36)", nullable: false)
                 },
                 constraints: table =>
                 {
