@@ -64,6 +64,7 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
 
             //Registering the infra, and the data layer.
             services.AddScoped<IMainDatabaseContext, MainDatabaseContext>();
+            services.AddScoped<IContractRepository, ContractRepository>();
             services.AddScoped<IRiskQuestionRepository, RiskQuestionRepository>();
         }
 

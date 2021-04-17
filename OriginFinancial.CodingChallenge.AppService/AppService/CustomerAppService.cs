@@ -80,6 +80,7 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
             {
                 return customerRiskQuestions.Select(x => new CustomerRiskQuestionViewModel
                 {
+                    ID = x.ID,
                     Question = x.RiskQuestion.Question,
                     Answer = x.RiskQuestionAnswer,
                     Created = x.Created,

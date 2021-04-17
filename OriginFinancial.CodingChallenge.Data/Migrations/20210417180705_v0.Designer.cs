@@ -9,7 +9,7 @@ using OriginFinancial.CodingChallenge.Infra.Data.Context;
 namespace OriginFinancial.CodingChallenge.Infra.Data.Migrations
 {
     [DbContext(typeof(MainDatabaseContext))]
-    [Migration("20210415232027_v0")]
+    [Migration("20210417180705_v0")]
     partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OriginFinancial.CodingChallenge.Domain.Entity;
+using OriginFinancial.CodingChallenge.Domain.Interface.Repository;
 using OriginFinancial.CodingChallenge.Domain.Interface.Service;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,12 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
 {
     public class ContractService : IContractService
     {
+        private readonly IContractRepository _contractRepository;
         private readonly IRiskQuestionService _riskQuestionService;
 
         public ContractService(IServiceProvider services)
         {
+            _contractRepository = services.GetRequiredService<IContractRepository>();
             _riskQuestionService = services.GetRequiredService<IRiskQuestionService>();
         }
 
@@ -23,7 +26,7 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
         /// <param name="customer">The customer data for the new contract.</param>
         /// <param name="riskQuestions">The customer's risk question's asnwers.</param>
         /// <returns>A <see cref="Customer"/> object for the registered new contract.</returns>
-        public Task<Contract> CreateAsync(Customer customer, List<RiskQuestion> riskQuestions)
+        public async Task<Contract> CreateAsync(Customer customer, List<RiskQuestion> riskQuestions)
         {
             //Instantiating the new contract.
             Contract contract = new Contract();
@@ -38,7 +41,9 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                 for (int i = 0; i < riskQuestionsDB.Count(); i++)
                 {
                     riskQuestions[i].ID = riskQuestionsDB[i].ID;
-                    riskQuestions[i].Question = riskQuestionsDB[i].Question; 
+                    riskQuestions[i].Question = riskQuestionsDB[i].Question;
+                    riskQuestions[i].StatusID = riskQuestionsDB[i].StatusID;
+                    riskQuestions[i].Created = riskQuestionsDB[i].Created;
                 }
 
                 //Creating the list of customer-risk questions object.
@@ -47,7 +52,6 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                     ID = x.ID,
                     RiskQuestionAnswer = x.Answer,
                     RiskQuestionID = x.ID,
-                    RiskQuestion = x,
                     Customer = customer,
                     Contract = contract,
                     Created = DateTime.Now
@@ -71,11 +75,14 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                 //Setting the contract's and the customer's remaining information.
                 contract.CustomerRiskQuestions = customerRiskQuestions;
                 contract.Created = customer.Created = DateTime.Now;
+
+                //Registering into database.
+                contract = await _contractRepository.AddAsync(contract, true);
             }
             else
                 throw new Exception("The submitted answers do not correspond to the active questions registered in database.");
 
-            return Task.FromResult(contract);
+            return contract;
         }
 
         /// <summary>
