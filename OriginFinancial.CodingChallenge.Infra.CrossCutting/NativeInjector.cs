@@ -92,7 +92,7 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
         /// The method for inserting inital data into the database.
         /// </summary>
         /// <param name="builder">Interface that allows a configuration of the application's request pipeline.</param>
-        public static void SeedDatabase(IApplicationBuilder builder)
+        public static void SeedDatabases(IApplicationBuilder builder)
         {
             try
             {
@@ -115,6 +115,22 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
                         }
                     }
                 }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The method for registering the data the comes from static external data.
+        /// </summary>
+        /// <param name="services">The interface for specifying contracts for multiple layers of services.</param>
+        /// <param name="configuration">The interface for the configuration builder contract specification.</param>
+        public static void RegisterExternalConfigurations(IServiceCollection services, IConfiguration configuration)
+        {
+            try
+            {
             }
             catch
             {

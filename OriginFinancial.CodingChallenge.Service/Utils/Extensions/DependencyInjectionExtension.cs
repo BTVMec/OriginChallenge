@@ -21,5 +21,11 @@ namespace OriginFinancial.CodingChallenge.Service.Utils.Extensions
             //Registering dependency injection for multiple classes of services.
             NativeInjector.RegisterServices(services);
         }
+
+        public static void AddExternalDataConfigurations(this IServiceCollection services, IConfiguration configuration)
+        {
+            //Registering external data configurations.
+            NativeInjector.RegisterExternalConfigurations(services, configuration);
+        }
     }
 }
