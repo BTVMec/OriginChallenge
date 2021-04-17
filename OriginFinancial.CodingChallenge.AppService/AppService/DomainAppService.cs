@@ -71,6 +71,24 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
             }
             domainsViewModel.Add(riskDomainViewModel);
 
+            //Retrieving the properties from entities - Insurance Policies.
+            var insurancePoliciesValues = Enum.GetValues(typeof(ContractViewModel.Insurance));
+            DomainViewModel insuranceDomainViewModel = new DomainViewModel
+            {
+                Property = "Insurance Policies",
+                Definitions = new List<DomainKeyValuesPair>()
+            };
+            for (int i = 1; i <= insurancePoliciesValues.Length; i++)
+            {
+                DomainKeyValuesPair domainKeyValuesPair = new DomainKeyValuesPair
+                {
+                    Key = i,
+                    Value = insurancePoliciesValues.GetValue(i - 1).ToString()
+                };
+                insuranceDomainViewModel.Definitions.Add(domainKeyValuesPair);
+            }
+            domainsViewModel.Add(insuranceDomainViewModel);
+
             return domainsViewModel;
         }
     }
