@@ -56,6 +56,12 @@ namespace OriginFinancial.CodingChallenge.Service
             //Adding the custom DI services.
             services.AddDIConfigurations(Configuration);
 
+            //Adding the custom external data from static files' configurations.
+            services.AddExternalDataConfigurations(Configuration);
+
+            //Retrieving the base key for JWT generation.
+            string key = services.RetrieveSecurityKey(Configuration);
+
             //Adding authorization.
             services.AddAuthorization(options =>
             {
