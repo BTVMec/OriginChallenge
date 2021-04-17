@@ -10,8 +10,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [Column(TypeName = "int")]
         public int ID { get; set; }
 
-        [Column(TypeName = "int")]
-        public int RiskQuestionAnswer { get; set; }
+        [Column(TypeName = "bit")]
+        public bool RiskQuestionAnswer { get; set; }
 
         #region Tracking.
         [Column(TypeName = "datetime")]
@@ -22,14 +22,14 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         #endregion
 
         #region Foreign keys.
-        [Column(TypeName = "char(36)")]
-        public Guid CustomerID { get; set; }
+        [Column(TypeName = "int")]
+        public int CustomerID { get; set; }
 
         [Column(TypeName = "int")]
         public int RiskQuestionID { get; set; }
 
-        [Column(TypeName = "int")]
-        public int InsuranceContractID { get; set; }
+        [Column(TypeName = "char(36)")]
+        public Guid ContractID { get; set; }
         #endregion
 
         #region Foreign objects.
@@ -39,8 +39,8 @@ namespace OriginFinancial.CodingChallenge.Domain.Entity
         [ForeignKey("RiskQuestionID")]
         public virtual RiskQuestion RiskQuestion { get; set; }
 
-        [ForeignKey("InsuranceContractID")]
-        public virtual InsuranceContract InsuranceContract { get; set; }
+        [ForeignKey("ContractID")]
+        public virtual Contract Contract { get; set; }
         #endregion
     }
 }

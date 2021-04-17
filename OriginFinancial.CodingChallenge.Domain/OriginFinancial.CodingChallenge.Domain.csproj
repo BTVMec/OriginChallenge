@@ -5,9 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\Repository\" />
-    <Folder Include="Interface\Service\" />
-    <Folder Include="Service\" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
   </ItemGroup>
 
 </Project>

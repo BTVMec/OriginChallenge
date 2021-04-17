@@ -50,7 +50,7 @@ namespace OriginFinancial.CodingChallenge.Service
                 options.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
                 options.SerializerSettings.Culture = new CultureInfo("en-US");
                 options.SerializerSettings.DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat;
-                options.SerializerSettings.DateFormatString = "yyyy-MM-ddTHH:mm:ss";
+                options.SerializerSettings.DateFormatString = "yyyy/MM/dd HH:mm:ss";
             });
 
             //Adding the custom DI services.
@@ -83,8 +83,14 @@ namespace OriginFinancial.CodingChallenge.Service
                 app.UseExceptionHandler("/error");
             }
 
+            //Setting the usage of authorization.
+            app.UseAuthentication();
+
             //Checking/running the available migrations.
             app.MigrateContexts();
+
+            //Checking/running the initial database's seed.
+            app.SeedDatabase();
 
             //Setting the usage of static files.
             app.UseStaticFiles();
