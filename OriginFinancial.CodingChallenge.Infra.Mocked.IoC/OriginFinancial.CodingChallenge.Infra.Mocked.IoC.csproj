@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj" />
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.Infra.MockedData\OriginFinancial.CodingChallenge.Infra.Mocked.Data.csproj" />
+  </ItemGroup>
+
+</Project>
