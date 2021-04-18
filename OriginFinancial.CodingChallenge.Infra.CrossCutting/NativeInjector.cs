@@ -10,8 +10,10 @@ using OriginFinancial.CodingChallenge.Domain.Interface.Repository;
 using OriginFinancial.CodingChallenge.Domain.Interface.Service;
 using OriginFinancial.CodingChallenge.Domain.Service;
 using OriginFinancial.CodingChallenge.Infra.Data.Context;
+using OriginFinancial.CodingChallenge.Infra.Data.Environment;
 using OriginFinancial.CodingChallenge.Infra.Data.Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OriginFinancial.CodingChallenge.Infra.IoC
@@ -21,9 +23,23 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
     /// </summary>
     public class NativeInjector
     {
-        private static readonly string EnvironmentName = "ORIGIN_ENVIRONMENT";
-        private static readonly string ConnStringsName = "CONN_STRINGS";
-        private static readonly string MainDatabaseContextName = "ORIGIN_MAIN_DATABASE";
+        /// <summary>
+        /// The method for registering the data the comes from static external data.
+        /// </summary>
+        /// <param name="services">The interface for specifying contracts for multiple layers of services.</param>
+        /// <param name="configuration">The interface for the configuration builder contract specification.</param>
+        public static void RegisterExternalConfigurations(IServiceCollection services, IConfiguration configuration)
+        {
+            try
+            {
+                //Registering the environment variables for the contexts.
+                services.Configure<EnvironmentConfiguration>(configuration.GetSection("EnvironmentConfiguration"));
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
         /// <summary>
         /// The method for registering the dependency injection of contexts.
@@ -32,18 +48,22 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
         /// <param name="configuration">The interface for the configuration builder contract specification.</param>
         public static void RegisterContexts(IServiceCollection services, IConfiguration configuration)
         {
+            string EnvironmentName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:EnvironmentName");
+            string ConnStringsName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Contexts:ConnStringsName");
+            string MainDatabaseContextName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Contexts:DatabaseNames:0");
+
             //Registering the main database context.
             services.AddDbContext<MainDatabaseContext>(
-                    options => options.UseMySql
-                    (
-                        configuration
-                        .GetSection($"{EnvironmentName}")
-                        .GetSection($"{ConnStringsName}")
-                        .GetSection($"{MainDatabaseContextName}")
-                        .Value
-                    ),
-                    ServiceLifetime.Scoped
-                );
+                        options => options.UseMySql
+                        (
+                            configuration
+                            .GetSection($"{EnvironmentName}")
+                            .GetSection($"{ConnStringsName}")
+                            .GetSection($"{MainDatabaseContextName}")
+                            .Value
+                        ),
+                        ServiceLifetime.Scoped
+                    );
         }
 
         /// <summary>
@@ -92,7 +112,7 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
         /// The method for inserting inital data into the database.
         /// </summary>
         /// <param name="builder">Interface that allows a configuration of the application's request pipeline.</param>
-        public static void SeedDatabase(IApplicationBuilder builder)
+        public static void SeedDatabases(IApplicationBuilder builder)
         {
             try
             {
@@ -120,6 +140,21 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
             {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// The static method for retrieving the JWT base key for auth.
+        /// </summary>
+        /// <param name="services">The interface for specifying contracts for multiple layers of services;</param>
+        /// <param name="configuration">The interface for the configuration builder contract specification.</param>
+        /// <returns></returns>
+        public static string RetrieveSecurityKey(IServiceCollection services, IConfiguration configuration)
+        {
+            string EnvironmentName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:EnvironmentName");
+            string SecName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Security:SecurityName");
+            string SecValue = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Security:SecurityValue");
+
+            return configuration.GetSection($"{EnvironmentName}").GetSection($"{SecName}").GetSection($"{SecValue}").Value;
         }
     }
 }

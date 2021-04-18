@@ -38,7 +38,7 @@ namespace OriginFinancial.CodingChallenge.Service.Utils.Middleware
             try
             {
                 //Seeding the databases.
-                NativeInjector.SeedDatabase(builder);
+                NativeInjector.SeedDatabases(builder);
 
                 return builder;
             }

@@ -49,7 +49,6 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
                 //Creating the list of customer-risk questions object.
                 List<CustomerRiskQuestion> customerRiskQuestions = riskQuestions.Select(x => new CustomerRiskQuestion
                 {
-                    ID = x.ID,
                     RiskQuestionAnswer = x.Answer,
                     RiskQuestionID = x.ID,
                     Customer = customer,

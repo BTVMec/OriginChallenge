@@ -1,8 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using OriginFinancial.CodingChallenge.Domain.Entity;
 using OriginFinancial.CodingChallenge.Domain.Interface.Context;
+using OriginFinancial.CodingChallenge.Infra.Data.Environment;
 using System;
+using System.Linq;
 
 namespace OriginFinancial.CodingChallenge.Infra.Data.Context
 {
@@ -11,20 +14,25 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Context
     /// </summary>
     public class MainDatabaseContext : DbContext, IMainDatabaseContext
     {
-        private static readonly string EnvironmentName = "ORIGIN_ENVIRONMENT";
-        private static readonly string ConnStringsName = "CONN_STRINGS";
-        private static readonly string MainDatabaseContextName = "ORIGIN_MAIN_DATABASE";
-
         private readonly IConfiguration _configuration;
+        private readonly EnvironmentConfiguration _envOptions;
+
+        private readonly string EnvironmentName;
+        private readonly string ConnStringsName;
+        private readonly string MainDatabaseContextName;
 
         /// <summary>
         /// Constructor of the application's context.
         /// </summary>
         /// <param name="options">Options configured when registering this context for dependency injection.</param>
         /// <param name="configuration">Interface for the configuration builder contract specification.</param>
-        public MainDatabaseContext(DbContextOptions<MainDatabaseContext> options, IConfiguration configuration) : base(options)
+        public MainDatabaseContext(DbContextOptions<MainDatabaseContext> options, IConfiguration configuration, IOptions<EnvironmentConfiguration> envOptions) : base(options)
         {
             _configuration = configuration;
+            _envOptions = envOptions.Value;
+            EnvironmentName = _envOptions.EnvironmentVariables.FirstOrDefault(x => x.EnvironmentName.Contains("ORIGIN")).EnvironmentName;
+            ConnStringsName = _envOptions.EnvironmentVariables.FirstOrDefault(x => x.EnvironmentName.Contains("ORIGIN")).Contexts.ConnStringsName;
+            MainDatabaseContextName = _envOptions.EnvironmentVariables.FirstOrDefault(x => x.EnvironmentName.Contains("ORIGIN")).Contexts.DatabaseNames.FirstOrDefault(x => x.Contains("MAIN")).ToString();
         }
 
         /// <summary>

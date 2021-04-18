@@ -56,6 +56,20 @@ namespace OriginFinancial.CodingChallenge.Service
             //Adding the custom DI services.
             services.AddDIConfigurations(Configuration);
 
+            //Adding the custom external data from static files' configurations.
+            services.AddExternalDataConfigurations(Configuration);
+
+            //Retrieving the base key for JWT generation.
+            string key = services.RetrieveSecurityKey(Configuration);
+
+            //Adding authorization.
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Master", policy => policy.RequireClaim("Origin Roles", new string[] { "Master" }));
+                options.AddPolicy("Admin", policy => policy.RequireClaim("Origin Roles", new string[] { "Master", "Admin" }));
+                options.AddPolicy("Customer", policy => policy.RequireClaim("Origin Roles", new string[] { "Master", "Admin", "Customer" }));
+            });
+
             //Adding Swagger.
             services.AddSwaggerDocument(configurations =>
             {
