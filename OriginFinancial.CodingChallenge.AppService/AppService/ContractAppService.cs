@@ -130,6 +130,30 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
         }
 
         /// <summary>
+        /// The method that retrieves the existing contract in the database by its seria number.
+        /// </summary>
+        /// <param name="contractSerialNumber">The contract serial number.</param>
+        /// <returns>A <see cref="ContractViewModel"/> object for the registered contract.</returns>
+        public ContractViewModel Get(string contractSerialNumber)
+        {
+            try
+            {
+                //Retrieving the object.
+                Contract contract = _contractService.Get(contractSerialNumber);
+
+                //Checking the result.
+                if (contract != null)
+                    return DataToView(contract);
+                else
+                    return null;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// The method that lists the existing contracts in the database.
         /// </summary>
         /// <returns>A <see cref="List{T}"/> of <see cref="ContractViewModel"/> objects for the registered contracts.</returns>

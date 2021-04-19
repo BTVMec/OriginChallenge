@@ -116,7 +116,7 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
             try
             {
                 //Retrieve the existing contracts.
-                ContractViewModel contractViewModel = new ContractViewModel();
+                ContractViewModel contractViewModel = _contractAppService.Get(contractSerialNumber);
 
                 //Checking result.
                 if (contractViewModel != null)

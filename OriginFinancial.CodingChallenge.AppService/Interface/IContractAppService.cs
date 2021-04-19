@@ -18,5 +18,11 @@ namespace OriginFinancial.CodingChallenge.AppService.Interface
         /// </summary>
         /// <returns>A <see cref="List{T}"/> of <see cref="ContractViewModel"/> objects for the registered contracts.</returns>
         List<ContractViewModel> List();
+        /// <summary>
+        /// The method that retrieves the existing contract in the database by its seria number.
+        /// </summary>
+        /// <param name="contractSerialNumber">The contract serial number.</param>
+        /// <returns>A <see cref="ContractViewModel"/> object for the registered contract.</returns>
+        ContractViewModel Get(string contractSerialNumber);
     }
 }

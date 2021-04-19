@@ -64,6 +64,11 @@ namespace OriginFinancial.CodingChallenge.Infra.Mocked.Data
             throw new NotImplementedException();
         }
 
+        public Contract Get(string contractSerialNumber)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Contract> List(Expression<Func<Contract, bool>> predicate)
         {
             throw new NotImplementedException();

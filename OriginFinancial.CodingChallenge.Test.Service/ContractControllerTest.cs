@@ -33,40 +33,58 @@ namespace OriginFinancial.CodingChallenge.Test.Service
             serviceProvider = TestMainConfiguration.GetServiceProviderInstance();
         }
 
+        /// <summary>
+        /// The method that tests the creation of a new contract. As it receives a valid contract, the contract should be successfully created.
+        /// </summary>
         [Fact]
         public void CreateAsync_ContractShouldBeCreated()
         {
+            //Arrange.
             Type type = typeof(CreatedResult);
 
+            //Asset an act.
             Assert.IsType(type, new ContractController(serviceProvider).CreateAsync(validContractDataRequest).GetAwaiter().GetResult());
         }
 
+        /// <summary>
+        /// The method that tests the consistency of the method during several requests.
+        /// </summary>
         [Fact]
         public void CreateAsync_Load()
         {
+            //Arranging.
             DateTime startDate = DateTime.Now;
             bool flag = false;
             long count = 0;
             Type type = typeof(CreatedResult);
 
+            //Acting.
             while (!flag)
             {
                 flag = type.Equals(new ContractController(serviceProvider).CreateAsync(validContractDataRequest).GetAwaiter().GetResult()) || count > 50000;
                 count++;
             }
 
+            //Final arranging.
             DateTime endDate = DateTime.Now;
 
+            //Assert.
             Assert.True(count > 50000 && (endDate - startDate).TotalSeconds < 30);
         }
 
+        /// <summary>
+        /// The method that tests the only parameters that is out of the data annotations validations scope: questions quantity.
+        /// </summary>
         [Fact]
         public void CreateAsync_ContractShouldFail_QuestionsQuantity()
         {
+            //Arrange.
             Type type = typeof(BadRequestObjectResult);
 
+            //Acting.
             validContractDataRequest.RiskQuestions.RemoveAt(2);
 
+            //Asset an act.
             Assert.IsType(type, new ContractController(serviceProvider).CreateAsync(validContractDataRequest).GetAwaiter().GetResult());
         }
     }

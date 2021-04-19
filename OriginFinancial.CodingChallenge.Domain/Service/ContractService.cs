@@ -233,5 +233,15 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
         {
             return _contractRepository.List();
         }
+
+        /// <summary>
+        /// The method that retrieves the existing contract in the database by its seria number.
+        /// </summary>
+        /// <param name="contractSerialNumber">The contract serial number.</param>
+        /// <returns>A <see cref="Contract"/> object for the registered contract.</returns>
+        public Contract Get(string contractSerialNumber)
+        {
+            return _contractRepository.Get(contractSerialNumber);
+        }
     }
 }
