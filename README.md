@@ -28,4 +28,5 @@ server=127.0.0.1;port=3306;database=dbOriginChallenge;uid=host;password=13881010
 * Business logic: tests the results of the requests for correct and wrong data requests;
 * Response types: checks if the expected response types are correctly implemented for the successful or failed request process.
 
-# 6. Code: this solution was built using C# as a language with the .NET Core 3.1 framework. For testing, there's the possibility of using Docker. However, for debugging, the easiest way is to have the Visual Studio installed with the .NET Core 3.1 framework setup. The ORM for this solution is the Entity Framework Core. For testing, some Mocked methods were created. But, for the controller test, the XUnit was used as the base framework.
+# 6. Code: 
+This solution was built using C# as a language with the .NET Core 3.1 framework. For testing, there's the possibility of using Docker. However, for debugging, the easiest way is to have the Visual Studio installed with the .NET Core 3.1 framework setup. The ORM for this solution is the Entity Framework Core. For testing, some Mocked methods were created. But, for the controller test, the XUnit was used as the base framework.
