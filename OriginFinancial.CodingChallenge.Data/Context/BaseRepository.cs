@@ -27,6 +27,15 @@ namespace OriginFinancial.CodingChallenge.Infra.Data.Context
             DbSet = _dbContext.Set<TEntity>();
         }
 
+        /// <summary>
+        /// The generic method for adding entities into the database.
+        /// </summary>
+        /// <param name="entity">The generic entity to be inserted into the database.</param>
+        /// <param name="commit"> If the transaction should be commited.
+        /// <list type="bullet"><see langword="True"/> Commits it.</list>
+        /// <list type="bullet"><see langword="False"/> Doesn't commit it.</list>
+        /// </param>
+        /// <returns>The added <see cref="TEntity"/> added to the context.</returns>
         public virtual async Task<TEntity> AddAsync(TEntity entity, bool commit)
         {
             try

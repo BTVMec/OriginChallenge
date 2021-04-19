@@ -4,7 +4,7 @@
         <name>OriginFinancial.CodingChallenge.Service</name>
     </assembly>
     <members>
-        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers.ContractController.CreateAsync(OriginFinancial.CodingChallenge.Service.Areas.Customer.Models.ContractDataRequest)">
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.General.Controllers.ContractController.CreateAsync(OriginFinancial.CodingChallenge.Service.Areas.General.Models.ContractDataRequest)">
             <summary>
             The asynchronous method for users/customers to create a insurance contract by giving their personal informations.
             </summary>
@@ -20,7 +20,37 @@
             </list>
             </returns>
         </member>
-        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers.DomainController.List">
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.General.Controllers.ContractController.Get(System.String)">
+            <summary>
+            The method that lists the existing contracts in the database.
+            </summary>
+            <returns>
+            <list type="bullet">
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse"/> if the process is successful;</description>
+            </item>
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse"/> if the process fails.</description>
+            </item>
+            </list>
+            </returns>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.General.Controllers.ContractController.List">
+            <summary>
+            The method that lists the existing contracts in the database.
+            </summary>
+            <returns>
+            <list type="bullet">
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.SuccessResponse"/> if the process is successful;</description>
+            </item>
+            <item>
+            <description>A <see cref="T:OriginFinancial.CodingChallenge.Service.Utils.Common.ErrorResponse"/> if the process fails.</description>
+            </item>
+            </list>
+            </returns>
+        </member>
+        <member name="M:OriginFinancial.CodingChallenge.Service.Areas.General.Controllers.DomainController.List">
             <summary>
             The method for listing the domain values considered for the system's properties.
             </summary>
