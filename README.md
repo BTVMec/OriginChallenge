@@ -1,4 +1,4 @@
-1. The User insurance creation:
+** 1.The User insurance creation:
 1.1 As the challenge states, there must be a user input, with the challenge described data. For that, this solution instates a Contract model. The model contains all of the challenge-required data and some other properties that make the solution more "user-friendly".
 1.2 Risk Questions: as a normal insurance tool would support several different questions, the risk questions were created dynamically, registered into the database. This makes it possible to add new questions, activate questions, or deactivate questions. The challenge uses only 03 questions, however, if there's a desire to add more questions, the solution is ready to deal with that new number.
 
