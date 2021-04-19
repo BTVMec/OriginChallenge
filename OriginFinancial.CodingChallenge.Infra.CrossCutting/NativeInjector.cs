@@ -141,20 +141,5 @@ namespace OriginFinancial.CodingChallenge.Infra.IoC
                 throw;
             }
         }
-
-        /// <summary>
-        /// The static method for retrieving the JWT base key for auth.
-        /// </summary>
-        /// <param name="services">The interface for specifying contracts for multiple layers of services;</param>
-        /// <param name="configuration">The interface for the configuration builder contract specification.</param>
-        /// <returns></returns>
-        public static string RetrieveSecurityKey(IServiceCollection services, IConfiguration configuration)
-        {
-            string EnvironmentName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:EnvironmentName");
-            string SecName = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Security:SecurityName");
-            string SecValue = configuration.GetValue<string>("EnvironmentConfiguration:EnvironmentVariables:0:Security:SecurityValue");
-
-            return configuration.GetSection($"{EnvironmentName}").GetSection($"{SecName}").GetSection($"{SecValue}").Value;
-        }
     }
 }

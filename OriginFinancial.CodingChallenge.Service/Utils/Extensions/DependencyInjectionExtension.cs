@@ -32,17 +32,5 @@ namespace OriginFinancial.CodingChallenge.Service.Utils.Extensions
             //Registering external data configurations.
             NativeInjector.RegisterExternalConfigurations(services, configuration);
         }
-
-        /// <summary>
-        /// The static method for retrieving the JWT base key for auth.
-        /// </summary>
-        /// <param name="services">The interface for specifying contracts for multiple layers of services;</param>
-        /// <param name="configuration">The interface for the configuration builder contract specification.</param>
-        /// <returns></returns>
-        public static string RetrieveSecurityKey(this IServiceCollection services, IConfiguration configuration)
-        {
-            //Retrieving the security key for JWT Auth.
-            return NativeInjector.RetrieveSecurityKey(services, configuration);
-        }
     }
 }
