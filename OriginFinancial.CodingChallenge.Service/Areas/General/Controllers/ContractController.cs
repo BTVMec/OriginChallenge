@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using OriginFinancial.CodingChallenge.AppService.Interface;
 using OriginFinancial.CodingChallenge.AppService.ViewModel;
-using OriginFinancial.CodingChallenge.Service.Areas.Customer.Models;
+using OriginFinancial.CodingChallenge.Service.Areas.General.Models;
 using OriginFinancial.CodingChallenge.Service.Utils.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers
+namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
 {
-    [Area("Customer")]
+    [Area("General")]
     [Route("[controller]")]
     [ApiController]
     public class ContractController : CommonBaseController
@@ -85,7 +85,81 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers
                 if (contractViewModel != null)
                     return Created("", contractViewModel);
                 else
-                    return Ok();
+                    return Conflict("The received data was of incorrect value.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(SetTrace(ex));
+            }
+        }
+
+        /// <summary>
+        /// The method that lists the existing contracts in the database.
+        /// </summary>
+        /// <returns>
+        /// <list type="bullet">
+        /// <item>
+        /// <description>A <see cref="SuccessResponse"/> if the process is successful;</description>
+        /// </item>
+        /// <item>
+        /// <description>A <see cref="ErrorResponse"/> if the process fails.</description>
+        /// </item>
+        /// </list>
+        /// </returns>
+        [AllowAnonymous]
+        [HttpGet("")]
+        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        public ActionResult Get([FromQuery] string contractSerialNumber)
+        {
+            try
+            {
+                //Retrieve the existing contracts.
+                ContractViewModel contractViewModel = new ContractViewModel();
+
+                //Checking result.
+                if (contractViewModel != null)
+                    return Ok(contractViewModel);
+                else
+                    return NotFound("No contracts were found.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        /// <summary>
+        /// The method that lists the existing contracts in the database.
+        /// </summary>
+        /// <returns>
+        /// <list type="bullet">
+        /// <item>
+        /// <description>A <see cref="SuccessResponse"/> if the process is successful;</description>
+        /// </item>
+        /// <item>
+        /// <description>A <see cref="ErrorResponse"/> if the process fails.</description>
+        /// </item>
+        /// </list>
+        /// </returns>
+        [AllowAnonymous]
+        [HttpGet("List")]
+        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        public ActionResult List()
+        {
+            try
+            {
+                //Listing the existing contracts.
+                List<ContractViewModel> contractsViewModel = _contractAppService.List();
+
+                //Checking result.
+                if (contractsViewModel?.Count() > 0)
+                    return Ok(contractsViewModel);
+                else
+                    return NotFound("No contracts were found.");
             }
             catch (Exception ex)
             {

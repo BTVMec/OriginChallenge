@@ -50,6 +50,9 @@ namespace OriginFinancial.CodingChallenge.Infra.Mocked.Data
                     contract.CustomerRiskQuestions[i].RiskQuestion = riskQuestions[i];
                 }
 
+                //Accounting for possible delay while adding object to the database.
+                Task.Delay(500);
+
                 return Task.FromResult(contract);
             }
             else
@@ -62,6 +65,11 @@ namespace OriginFinancial.CodingChallenge.Infra.Mocked.Data
         }
 
         public IEnumerable<Contract> List(Expression<Func<Contract, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Contract> List()
         {
             throw new NotImplementedException();
         }

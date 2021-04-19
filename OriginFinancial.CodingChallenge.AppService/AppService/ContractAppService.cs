@@ -64,6 +64,42 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
         }
 
         /// <summary>
+        /// The method that converts the properties values from the list as data model to the list as view model.
+        /// </summary>
+        /// <param name="contract">The list as data model.</param>
+        /// <returns>A <see cref="List{T}"/> of <see cref="ContractViewModel"/> objects created from the list as data model.</returns>
+        public List<ContractViewModel> ListDataToListView(List<Contract> contracts)
+        {
+            try
+            {
+                return contracts.Select(x => new ContractViewModel
+                {
+                    ID = x.ID,
+                    CustomerInfo = _customerAppService.DataToView(x.CustomerRiskQuestions.FirstOrDefault().Customer),
+                    RiskQuestions = _customerAppService.ListDataToListView(x.CustomerRiskQuestions),
+                    GlobalRiskPoints = x.GlobalRiskPoints,
+                    InsurancePolicies = new InsurancePolicies
+                    {
+                        AutoID = x.AutoInsuranceID,
+                        AutoPoints = x.AutoInsurancePoints,
+                        DisabilityID = x.DisabilityInsuranceID,
+                        DisabilityPoints = x.DisabilityInsurancePoints,
+                        HomeID = x.HomeInsuranceID,
+                        HomePoints = x.HomeInsurancePoints,
+                        LifeID = x.LifeInsuranceID,
+                        LifePoints = x.LifeInsurancePoints,
+                    },
+                    Created = x.Created,
+                    Modified = x.Modified
+                }).ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// The asynchronous method for registering a new customer's contract.
         /// </summary>
         /// <param name="customerViewModel">The customer data for the new contract.</param>
@@ -86,6 +122,30 @@ namespace OriginFinancial.CodingChallenge.AppService.AppService
                 ContractViewModel contractViewModel = DataToView(contract);
 
                 return contractViewModel;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The method that lists the existing contracts in the database.
+        /// </summary>
+        /// <returns>A <see cref="List{T}"/> of <see cref="ContractViewModel"/> objects for the registered contracts.</returns>
+        public List<ContractViewModel> List()
+        {
+            try
+            {
+                //Retrieving the contracts from the database.
+                List<Contract> contracts = _contractService.List();
+
+                //Checking the result.
+                if (contracts?.Count() > 0)
+                    //Transforming the data from the database model to the view model.
+                    return ListDataToListView(contracts);
+                else
+                    return new List<ContractViewModel>();
             }
             catch
             {

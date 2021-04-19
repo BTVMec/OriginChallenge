@@ -53,6 +53,9 @@ namespace OriginFinancial.CodingChallenge.Infra.Mocked.Data
                 }
             }.AsQueryable();
 
+            //Accounting for possible delay while retrieving data from the database.
+            Task.Delay(500);
+
             return riskQuestions.Where(predicate);
         }
     }

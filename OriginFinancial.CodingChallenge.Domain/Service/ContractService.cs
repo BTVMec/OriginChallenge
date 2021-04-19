@@ -224,5 +224,14 @@ namespace OriginFinancial.CodingChallenge.Domain.Service
             else
                 return 4;
         }
+
+        /// <summary>
+        /// The method that lists the existing contracts in the database.
+        /// </summary>
+        /// <returns>A <see cref="List{T}"/> of <see cref="Contract"/> objects for the registered contracts.</returns>
+        public List<Contract> List()
+        {
+            return _contractRepository.List();
+        }
     }
 }

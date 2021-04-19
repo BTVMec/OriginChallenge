@@ -8,9 +8,8 @@ using OriginFinancial.CodingChallenge.Service.Utils.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Controllers
+namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
 {
     [Area("Customer")]
     [Route("[controller]")]

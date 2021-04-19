@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using OriginFinancial.CodingChallenge.AppService.Interface;
 using OriginFinancial.CodingChallenge.AppService.ViewModel;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
+namespace OriginFinancial.CodingChallenge.Service.Areas.General.Models
 {
     public class ContractDataRequest
     {
@@ -26,7 +27,7 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.Customer.Models
         [Display(Name = "Age")]
         [Required(ErrorMessage = "The {0} field is required.")]
         [Range(18, 100, ErrorMessage = "The field {0} value's must be from {1} to {2}.")]
-        public int Age { get; set; } 
+        public int Age { get; set; }
 
         [Display(Name = "Dependents")]
         [Required(ErrorMessage = "The {0} field is required.")]

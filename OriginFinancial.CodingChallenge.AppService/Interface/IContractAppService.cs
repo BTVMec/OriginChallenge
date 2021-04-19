@@ -13,5 +13,10 @@ namespace OriginFinancial.CodingChallenge.AppService.Interface
         /// <param name="lstRiskQuestions">The customer's risk question's asnwers.</param>
         /// <returns>A <see cref="ContractViewModel"/> object for the registered new contract.</returns>
         Task<ContractViewModel> CreateAsync(CustomerViewModel customer, List<RiskQuestionViewModel> lstRiskQuestions);
+        /// <summary>
+        /// The method that lists the existing contracts in the database.
+        /// </summary>
+        /// <returns>A <see cref="List{T}"/> of <see cref="ContractViewModel"/> objects for the registered contracts.</returns>
+        List<ContractViewModel> List();
     }
 }
