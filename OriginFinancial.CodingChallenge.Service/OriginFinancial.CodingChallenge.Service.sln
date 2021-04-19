@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Service", "OriginFinancial.CodingChallenge.Service.csproj", "{8C334378-7C04-4716-93C9-4B665C8DD30D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Service", "OriginFinancial.CodingChallenge.Service.csproj", "{8C334378-7C04-4716-93C9-4B665C8DD30D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Service", "1 - Service", "{26C80AE7-3238-4841-B24F-8DA280A033BC}"
 EndProject
@@ -17,13 +17,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{609AA2E2-06D0-46EB-9099-03EA9BCC2540}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.AppService", "..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj", "{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.AppService", "..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj", "{97E15652-B8A7-41A9-8C23-2CA1D8BC354A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Domain", "..\OriginFinancial.CodingChallenge.Domain\OriginFinancial.CodingChallenge.Domain.csproj", "{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Domain", "..\OriginFinancial.CodingChallenge.Domain\OriginFinancial.CodingChallenge.Domain.csproj", "{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Infra.Data", "..\OriginFinancial.CodingChallenge.Data\OriginFinancial.CodingChallenge.Infra.Data.csproj", "{BC8AD251-2713-44A8-9072-94F034B48EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Infra.Data", "..\OriginFinancial.CodingChallenge.Data\OriginFinancial.CodingChallenge.Infra.Data.csproj", "{BC8AD251-2713-44A8-9072-94F034B48EF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Infra.IoC", "..\OriginFinancial.CodingChallenge.Infra.CrossCutting\OriginFinancial.CodingChallenge.Infra.IoC.csproj", "{2143CEEC-2623-4C05-AB12-01EED967A112}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Infra.IoC", "..\OriginFinancial.CodingChallenge.Infra.CrossCutting\OriginFinancial.CodingChallenge.Infra.IoC.csproj", "{2143CEEC-2623-4C05-AB12-01EED967A112}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - MockedInfra", "4.1 - MockedInfra", "{1A769806-DAB6-4587-A4E2-B1FB37525AC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1.1 - MockedData", "4.1.1 - MockedData", "{24720604-20EB-47C6-81E1-CC6BB79D544F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1.2 - MockedCrossCutting", "4.1.2 - MockedCrossCutting", "{8855DAE1-3559-4818-86DB-37D290BCD544}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Infra.Mocked.Data", "..\OriginFinancial.CodingChallenge.Infra.MockedData\OriginFinancial.CodingChallenge.Infra.Mocked.Data.csproj", "{65105B71-3308-4BA9-A34D-14B6A90F031D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OriginFinancial.CodingChallenge.Infra.Mocked.IoC", "..\OriginFinancial.CodingChallenge.Infra.Mocked.IoC\OriginFinancial.CodingChallenge.Infra.Mocked.IoC.csproj", "{3ACAA2C0-4B03-47AB-A757-075CEAB04171}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.1 - TestService", "1.1 - TestService", "{F98A0C08-CBE2-4FB2-A845-05D725A2C612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginFinancial.CodingChallenge.Test.Service", "..\OriginFinancial.CodingChallenge.Test.Service\OriginFinancial.CodingChallenge.Test.Service.csproj", "{DCD7B605-D633-4194-8264-265132213638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +65,18 @@ Global
 		{2143CEEC-2623-4C05-AB12-01EED967A112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2143CEEC-2623-4C05-AB12-01EED967A112}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2143CEEC-2623-4C05-AB12-01EED967A112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65105B71-3308-4BA9-A34D-14B6A90F031D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65105B71-3308-4BA9-A34D-14B6A90F031D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65105B71-3308-4BA9-A34D-14B6A90F031D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65105B71-3308-4BA9-A34D-14B6A90F031D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ACAA2C0-4B03-47AB-A757-075CEAB04171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ACAA2C0-4B03-47AB-A757-075CEAB04171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ACAA2C0-4B03-47AB-A757-075CEAB04171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ACAA2C0-4B03-47AB-A757-075CEAB04171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCD7B605-D633-4194-8264-265132213638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCD7B605-D633-4194-8264-265132213638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCD7B605-D633-4194-8264-265132213638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCD7B605-D633-4194-8264-265132213638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +89,11 @@ Global
 		{D686AB6A-FEEA-4C3E-97F9-C2105D311EE8} = {EF996275-7C67-4EF1-A9BB-1C9523E1676E}
 		{BC8AD251-2713-44A8-9072-94F034B48EF3} = {1F9CA38D-A7B0-4C5A-8E32-2D95C616382C}
 		{2143CEEC-2623-4C05-AB12-01EED967A112} = {609AA2E2-06D0-46EB-9099-03EA9BCC2540}
+		{24720604-20EB-47C6-81E1-CC6BB79D544F} = {1A769806-DAB6-4587-A4E2-B1FB37525AC1}
+		{8855DAE1-3559-4818-86DB-37D290BCD544} = {1A769806-DAB6-4587-A4E2-B1FB37525AC1}
+		{65105B71-3308-4BA9-A34D-14B6A90F031D} = {24720604-20EB-47C6-81E1-CC6BB79D544F}
+		{3ACAA2C0-4B03-47AB-A757-075CEAB04171} = {8855DAE1-3559-4818-86DB-37D290BCD544}
+		{DCD7B605-D633-4194-8264-265132213638} = {F98A0C08-CBE2-4FB2-A845-05D725A2C612}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {80F9E3F8-AD5A-4466-9BA8-109E69B84BEA}

@@ -13,3 +13,12 @@
 /OriginFinancial.CodingChallenge.Service/.vs/OriginFinancial.CodingChallenge.Service/v16
 /OriginFinancial.CodingChallenge.Service/bin/Debug/netcoreapp3.1
 /OriginFinancial.CodingChallenge.Service/obj
+/OriginFinancial.CodingChallenge.Service/.vs/OriginFinancial.CodingChallenge.Service/config
+/OriginFinancial.CodingChallenge.Service/.vs/OriginFinancial.CodingChallenge.Service/DesignTimeBuild
+/OriginFinancial.CodingChallenge.Infra.Mocked.IoC/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Infra.Mocked.IoC/obj
+/OriginFinancial.CodingChallenge.Infra.MockedData/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Infra.MockedData/obj
+/OriginFinancial.CodingChallenge.Test.Service/bin/Debug/netcoreapp3.1
+/OriginFinancial.CodingChallenge.Test.Service/obj
+/OriginFinancial.CodingChallenge.Service/.config/netcoreapp3.1

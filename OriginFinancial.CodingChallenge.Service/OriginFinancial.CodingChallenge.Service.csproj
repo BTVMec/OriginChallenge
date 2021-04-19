@@ -1,8 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.config\OriginFinancial.CodingChallenge.Service.xml</DocumentationFile>
+    <NoWarn>1701;1702; 1591</NoWarn>
+    <OutputPath></OutputPath>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.AppService\OriginFinancial.CodingChallenge.AppService.csproj" />
+    <ProjectReference Include="..\OriginFinancial.CodingChallenge.Infra.CrossCutting\OriginFinancial.CodingChallenge.Infra.IoC.csproj" />
+  </ItemGroup>
 
 
 </Project>
