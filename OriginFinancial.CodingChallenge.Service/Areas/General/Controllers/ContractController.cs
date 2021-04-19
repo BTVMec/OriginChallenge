@@ -41,7 +41,7 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
         /// </returns>
         [AllowAnonymous]
         [HttpPost("")]
-        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CreatedResult), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateAsync([FromBody] ContractDataRequest contractDataRequest)
         {
@@ -108,7 +108,7 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
         /// </returns>
         [AllowAnonymous]
         [HttpGet("")]
-        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(OkObjectResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public ActionResult Get([FromQuery] string contractSerialNumber)
@@ -145,7 +145,7 @@ namespace OriginFinancial.CodingChallenge.Service.Areas.General.Controllers
         /// </returns>
         [AllowAnonymous]
         [HttpGet("List")]
-        [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(OkObjectResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(SuccessResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         public ActionResult List()

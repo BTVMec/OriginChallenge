@@ -69,7 +69,7 @@ namespace OriginFinancial.CodingChallenge.Test.Service
             DateTime endDate = DateTime.Now;
 
             //Assert.
-            Assert.True(count > 50000 && (endDate - startDate).TotalSeconds < 30);
+            Assert.True(count > 50000 && (endDate - startDate).TotalSeconds < 60);
         }
 
         /// <summary>
@@ -86,6 +86,45 @@ namespace OriginFinancial.CodingChallenge.Test.Service
 
             //Asset an act.
             Assert.IsType(type, new ContractController(serviceProvider).CreateAsync(validContractDataRequest).GetAwaiter().GetResult());
+        }
+
+        /// <summary>
+        /// The method that tests the retrieving of a single contract filtered by its ID.
+        /// </summary>
+        [Fact]
+        public void Get_ShouldGetContract()
+        {
+            //Arrange.
+            Type type = typeof(OkObjectResult);
+
+            //Assert and act.
+            Assert.IsType(type, new ContractController(serviceProvider).Get("08d902dc-1b9a-4f37-8a46-270fdc92e61f"));
+        }
+
+        /// <summary>
+        /// The method that tests the consistency of the method during several requests.
+        /// </summary>
+        [Fact]
+        public void List_Load()
+        {
+            //Arranging.
+            DateTime startDate = DateTime.Now;
+            bool flag = false;
+            long count = 0;
+            Type type = typeof(OkObjectResult);
+
+            //Acting.
+            while (!flag)
+            {
+                flag = type.Equals(new ContractController(serviceProvider).List()) || count > 50000;
+                count++;
+            }
+
+            //Final arranging.
+            DateTime endDate = DateTime.Now;
+
+            //Assert.
+            Assert.True(count > 50000 && (endDate - startDate).TotalSeconds < 30);
         }
     }
 }

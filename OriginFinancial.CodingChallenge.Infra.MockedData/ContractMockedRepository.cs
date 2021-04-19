@@ -66,15 +66,136 @@ namespace OriginFinancial.CodingChallenge.Infra.Mocked.Data
 
         public Contract Get(string contractSerialNumber)
         {
-            throw new NotImplementedException();
-        }
+            Customer customer = new Customer
+            {
+                ID = 1,
+                FullName = "Bruno de Mello Tavares Lima",
+                Age = 31,
+                Dependents = 1,
+                House = 0,
+                HouseOwnershipStatusID = null,
+                Income = 120000,
+                MaritalStatusID = 2,
+                Vehicle = 1,
+                VehicleYear = 2008,
+                Created = DateTime.Now
+            };
+            RiskQuestion riskQuestion = new RiskQuestion
+            {
+                ID = 1,
+                Answer = true,
+                Question = "Testing question",
+                StatusID = 1,
+                Created = DateTime.Now
+            };
+            Contract contract = new Contract
+            {
+                ID = new Guid("08d902dc-1b9a-4f37-8a46-270fdc92e61f"),
+                GlobalRiskPoints = 2,
+                AutoInsurancePoints = 2,
+                AutoInsuranceID = 3,
+                DisabilityInsurancePoints = 3,
+                DisabilityInsuranceID = 4,
+                HomeInsurancePoints = 2,
+                HomeInsuranceID = 1,
+                LifeInsurancePoints = 3,
+                LifeInsuranceID = 4,
+                CustomerRiskQuestions = new List<CustomerRiskQuestion>
+                {
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    },
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    },
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    }
+                }
+            };
 
-        public IEnumerable<Contract> List(Expression<Func<Contract, bool>> predicate)
-        {
-            throw new NotImplementedException();
+            if (contract.ID.ToString().Equals(contractSerialNumber))
+                return contract;
+            else
+                return null;
         }
 
         public List<Contract> List()
+        {
+            Customer customer = new Customer
+            {
+                ID = 1,
+                FullName = "Bruno de Mello Tavares Lima",
+                Age = 31,
+                Dependents = 1,
+                House = 0,
+                HouseOwnershipStatusID = null,
+                Income = 120000,
+                MaritalStatusID = 2,
+                Vehicle = 1,
+                VehicleYear = 2008,
+                Created = DateTime.Now
+            };
+            RiskQuestion riskQuestion = new RiskQuestion
+            {
+                ID = 1,
+                Answer = true,
+                Question = "Testing question",
+                StatusID = 1,
+                Created = DateTime.Now
+            };
+            Contract contract = new Contract
+            {
+                ID = new Guid("08d902dc-1b9a-4f37-8a46-270fdc92e61f"),
+                GlobalRiskPoints = 2,
+                AutoInsurancePoints = 2,
+                AutoInsuranceID = 3,
+                DisabilityInsurancePoints = 3,
+                DisabilityInsuranceID = 4,
+                HomeInsurancePoints = 2,
+                HomeInsuranceID = 1,
+                LifeInsurancePoints = 3,
+                LifeInsuranceID = 4,
+                CustomerRiskQuestions = new List<CustomerRiskQuestion>
+                {
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    },
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    },
+                    new CustomerRiskQuestion
+                    {
+                        Customer = customer,
+                        RiskQuestion = riskQuestion
+                    }
+                }
+            };
+
+            List<Contract> contracts = new List<Contract>
+            {
+                contract,
+                contract,
+                contract
+            };
+
+            //Accounting for possible delay while adding object to the database.
+            Task.Delay(500);
+
+            return contracts;
+        }
+
+        public IEnumerable<Contract> List(Expression<Func<Contract, bool>> predicate)
         {
             throw new NotImplementedException();
         }
